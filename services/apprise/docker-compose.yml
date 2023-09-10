@@ -10,7 +10,7 @@ services:
       - reverse_proxy
     # user: "www-data:www-data"
     environment:
-      - BASE_URL: "apprise.brodsky.club"
+      - BASE_URL=apprise.brodsky.club
     volumes:
       - apprise_config:/config
       - apprise_plugin:/plugin
