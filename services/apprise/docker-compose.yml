@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  apprise:
+    image: caronc/apprise:latest
+    container_name: apprise
+    networks:
+      - reverse_proxy
+    # ports:
+    #   - 8000:8000
+    # user: "www-data:www-data"
+    volumes:
+      - apprise_config:/config
+      - apprise_plugin:/plugin
+      - apprise_attach:/attach
+
+networks:
+  reverse_proxy:
+    external: true
+
+volumes:
+  apprise_api: {}
+  apprise_plugin: {}
+  apprise_attach: {}
+
