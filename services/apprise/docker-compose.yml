@@ -5,7 +5,7 @@ services:
     image: caronc/apprise:latest
     container_name: apprise
     ports:
-      - 8000:8000
+      - 8123:8000
     # networks:
     #   - reverse_proxy
     # user: "www-data:www-data"
