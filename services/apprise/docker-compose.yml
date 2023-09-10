@@ -15,6 +15,11 @@ services:
       - apprise_config:/config
       - apprise_plugin:/plugin
       - apprise_attach:/attach
+  mailrise:
+    image: yoryan/mailrise:latest
+    container_name: mailrise
+    volumes:
+      - apprise_config:/etc/mailrise.conf
 
 # networks:
 #   reverse_proxy:
