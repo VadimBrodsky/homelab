@@ -16,9 +16,9 @@ services:
       - apprise_plugin:/plugin
       - apprise_attach:/attach
 
-networks:
-  reverse_proxy:
-    external: true
+# networks:
+#   reverse_proxy:
+#     external: true
 
 volumes:
   apprise_config:
