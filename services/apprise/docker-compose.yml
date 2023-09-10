@@ -19,7 +19,7 @@ networks:
     external: true
 
 volumes:
-  apprise_api: {}
+  apprise_config: {}
   apprise_plugin: {}
   apprise_attach: {}
 
