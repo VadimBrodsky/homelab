@@ -4,13 +4,13 @@ services:
   apprise:
     image: caronc/apprise:latest
     container_name: apprise
-    # ports:
-    #   - 8000:8000
-    networks:
-      - reverse_proxy
+    ports:
+      - 8000:8000
+    # networks:
+    #   - reverse_proxy
     # user: "www-data:www-data"
-    environment:
-      - BASE_URL=https://apprise.brodsky.club
+    # environment:
+    #   - BASE_URL=https://apprise.brodsky.club
     volumes:
       - apprise_config:/config
       - apprise_plugin:/plugin
