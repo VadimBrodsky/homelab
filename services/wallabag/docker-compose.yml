@@ -2,7 +2,7 @@ version: "3"
 
 services:
   wallabag:
-    image: wallabag/wallabag:2.6.2
+    image: wallabag/wallabag:latest
     environment:
       # - POSTGRES_USER
       # - POSTGRES_PASSWORD
