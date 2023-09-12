@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  miniflux:
+    image: miniflux/miniflux:latest
+    environment:
+      DATABASE_URL: ${MINIFLUX_DB_URL}
+      RUN_MIGRATIONS: 1
+      CREATE_ADMIN: 1
+      ADMIN_USERNAME: ${MINIFLUX_ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${MINIFLUX_ADMIN_PASSWORD}
+    networks:
+      - cloudflare_tunnel
+    healthcheck:
+      test: ["CMD", "/usr/bin/miniflux", "-healthcheck", "auto"]
+    restart: unless-stopped
+
+networks:
+  cloudflare_tunnel:
+    external: true
