@@ -1,0 +1,24 @@
+
+services:
+  linkding:
+    image: sissbruecker/linkding:latest
+    environment:
+      LD_DB_ENGINE: postgres
+      LD_DB_DATABASE: linkding
+      LD_DB_USER: ${LD_DB_USER}
+      LD_DB_PASSWORD: ${LD_DB_PASSWORD}
+      LD_DB_HOST: ${LD_DB_HOST}
+      LD_DB_PORT: ${LD_DB_PORT}
+    volumes:
+      - linkding_data:/etc/linkding/data"
+    networks:
+      - cloudflare_tunnel
+    restart: unless-stopped
+
+volumes:
+  linkding_data:
+    external: true
+
+networks:
+  cloudflare_tunnel:
+    external: true
