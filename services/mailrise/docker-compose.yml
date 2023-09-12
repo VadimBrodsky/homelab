@@ -4,6 +4,8 @@ services:
   mailrise:
     image: yoryan/mailrise:latest
     container_name: mailrise
+    environment:
+      POVER_URL: ${POVER_URL}
     ports:
       - "8025:8025"
     restart: unless-stopped
