@@ -1,21 +1,19 @@
-version: '3.8'
+version: "3"
 
 services:
   grafana:
-    image: grafana/grafana-oss
+    image: grafana/grafana-oss:latest
     container_name: grafana
     restart: unless-stopped
     networks:
       - reverse_proxy
-    # ports:
-    #   - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
 
 volumes:
-  grafana_data: {}
+  grafana_data:
+    external: true
 
 networks:
   reverse_proxy:
     external: true
-
