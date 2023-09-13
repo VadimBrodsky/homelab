@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  portainer:
+    image: portainer/portainer-ee:latest
+    environment:
+      PORTAINER_LICENSE_KEY: ${PORTAINER_LICENSE_KEY}
+    privileged: true
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - reverse_proxy
+    restart: unless-stopped
+
+volumes:
+  portainer_data:
+    external: true
+
+networks:
+  reverse_proxy:
+    external: true
