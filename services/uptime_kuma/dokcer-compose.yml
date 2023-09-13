@@ -6,7 +6,7 @@ services:
     volumes:
       - uptime_kuma_data:/app/data
     networks:
-      - cloudflare_tunnel
+      - reverse_proxy
     restart: unless-stopped
 
 volumes:
@@ -14,5 +14,5 @@ volumes:
     external: true
 
 networks:
-  cloudflare_tunnel:
+  reverse_proxy:
     external: true
