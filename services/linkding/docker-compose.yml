@@ -11,7 +11,7 @@ services:
       LD_DB_HOST: ${LD_DB_HOST}
       LD_DB_PORT: ${LD_DB_PORT}
     volumes:
-      - linkding_data:/etc/linkding/data"
+      - linkding_data:/etc/linkding/data
     networks:
       - cloudflare_tunnel
     restart: unless-stopped
