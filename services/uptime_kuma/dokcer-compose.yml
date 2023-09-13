@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  uptime_kuma:
+    image: louislam/uptime-kuma:1-alpine
+    volumes:
+      - uptime_kuma_data:/app/data
+    networks:
+      - cloudflare_tunnel
+    restart: unless-stopped
+
+volumes:
+  uptime_kuma_data:
+    external: true
+
+networks:
+  cloudflare_tunnel:
+    external: true
