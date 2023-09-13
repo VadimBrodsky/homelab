@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  homebridge:
+    image: homebridge/homebridge:latest
+    environment:
+      TZ: America/Toronto
+      ENABLE_AVAHI: 1
+    volumes:
+      - homebridge_data:/homebridge
+    network_mode: host
+    restart: unless-stopped
+
+volumes:
+  homebridge_data:
+    external: true
