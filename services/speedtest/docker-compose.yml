@@ -8,13 +8,13 @@ services:
       OOKLA_EULA_GDPR: true
       AUTH: true
     volumes:
-      - sppedtest_tracker_data:/config
+      - speedtest_tracker_data:/config
     networks:
       - reverse_proxy
     restart: unless-stopped
 
 volumes:
-  sppedtest_tracker_data:
+  speedtest_tracker_data:
     external: true
 
 networks:
