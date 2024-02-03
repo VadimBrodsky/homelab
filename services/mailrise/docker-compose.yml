@@ -2,7 +2,7 @@ version: "3"
 
 services:
   mailrise:
-    image: yoryan/mailrise:latest
+    image: yoryan/mailrise:1.4.0
     container_name: mailrise
     environment:
       POVER_URL: ${POVER_URL}
