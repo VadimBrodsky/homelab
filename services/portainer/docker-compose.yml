@@ -10,6 +10,8 @@ services:
       - portainer_data:/data
       # - /var/run/docker.sock:/var/run/docker.sock
       - /$XDG_RUNTIME_DIR/docker.sock:/var/run/docker.sock # rootless
+    ports:
+      - 9443:9443
     networks:
       - reverse_proxy
     restart: unless-stopped
