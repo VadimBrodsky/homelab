@@ -5,9 +5,9 @@ services:
     container_name: audiobookshelf
     image: ghcr.io/advplyr/audiobookshelf:latest
     volumes:
-      - shared_podcasts:/audiobooks
       - config:/config
       - metadata:/metadata
+      - shared_audiobooks:/audiobooks
       - shared_podcasts:/podcasts
     environment:
       - TZ=America/Toronto
