@@ -2,7 +2,7 @@ version: "3"
 
 services:
   romm:
-    image: zurdi15/romm:latest
+    image: zurdi15/romm:3.0.1
     container_name: romm
     restart: unless-stopped
     environment:
@@ -24,6 +24,7 @@ services:
       - roms_library:/romm/library # Your game library
     ports:
       - 8888:8080
+    restart: unless-stopped
 
 volumes:
   redis_data:
