@@ -8,20 +8,20 @@ services:
     environment:
       DB_HOST: ${ROMM_DATABASE_HOST}
       DB_NAME: ${ROMM_DB_NAME} # Should match MYSQL_DATABASE in mariadb
-      DB_USER: ${ROMM_DATABASE_USER} # Should match MYSQL_USER in mariadb
       DB_PASSWD: ${ROMM_DATABASE_PASSWORD} # Should match MYSQL_PASSWORD in mariadb
+      DB_USER: ${ROMM_DATABASE_USER} # Should match MYSQL_USER in mariadb
       IGDB_CLIENT_ID: ${ROMM_IGDB_CLIENT_ID} # Generate an ID and SECRET in IGDB
       IGDB_CLIENT_SECRET: ${ROMM_IGDB_CLIENT_SECRET} # https://api-docs.igdb.com/#account-creation
+      ROMM_AUTH_PASSWORD: ${ROMM_AUTH_PASSWORD} # default: admin
       ROMM_AUTH_SECRET_KEY: ${ROMM_SECRET} # Generate a key with `openssl rand -hex 32`
       ROMM_AUTH_USERNAME: ${ROMM_AUTH_USERNAME} # "admin"
-      ROMM_AUTH_PASSWORD: ${ROMM_AUTH_PASSWORD} # default: admin
     volumes:
       # - ./config.yml:/romm/config
       - roms_library:/romm/library # Your game library
-      - roms_assets:/romm/assets # Uploaded saves, states, etc.
-      - romm_resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
+      - romm_assets:/romm/assets # Uploaded saves, states, etc.
+      - romm_logs:/romm/logs # [Optional] Path where logs are stored
       - romm_redis_data:/redis-data # Cached data for background tasks
-      # - /path/to/logs:/romm/logs # [Optional] Path where logs are stored
+      - romm_resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
     ports:
       - 80:8080
 
@@ -29,5 +29,6 @@ volumes:
   romm_redis_data:
   romm_resources:
   romm_assets:
+  romm_logs:
   roms_library:
     external: true
