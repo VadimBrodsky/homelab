@@ -17,7 +17,7 @@ services:
 volumes:
   config:
   metadata:
-  shared_podcasts:
+  shared_audiobooks:
     external: true
   shared_podcasts:
     external: true
