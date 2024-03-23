@@ -17,8 +17,8 @@ services:
       ROMM_AUTH_PASSWORD: ${ROMM_AUTH_PASSWORD} # default: admin
     volumes:
       - ./config.yml:/romm/config
-      - roms_library:/romm/library # Your game library
-      - roms_assets:/romm/assets # Uploaded saves, states, etc.
+      - roms_library/roms:/romm/library # Your game library
+      - roms_library/assets:/romm/assets # Uploaded saves, states, etc.
       - romm_resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
       - romm_redis_data:/redis-data # Cached data for background tasks
       # - /path/to/logs:/romm/logs # [Optional] Path where logs are stored
@@ -28,8 +28,5 @@ services:
 volumes:
   romm_redis_data:
   romm_resources:
-    external: true
   roms_library:
-    external: true
-  roms_assets:
     external: true
