@@ -23,7 +23,7 @@ services:
       - romm_redis_data:/redis-data # Cached data for background tasks
       - romm_resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
     ports:
-      - 80:8080
+      - 8888:8080
 
 volumes:
   romm_redis_data:
