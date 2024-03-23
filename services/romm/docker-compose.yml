@@ -17,18 +17,18 @@ services:
       ROMM_AUTH_USERNAME: ${ROMM_AUTH_USERNAME} # "admin"
     volumes:
       # - ./config.yml:/romm/config
+      - assets:/romm/assets # Uploaded saves, states, etc.
+      - logs:/romm/logs # [Optional] Path where logs are stored
+      - redis_data:/redis-data # Cached data for background tasks
+      - resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
       - roms_library:/romm/library # Your game library
-      - romm_assets:/romm/assets # Uploaded saves, states, etc.
-      - romm_logs:/romm/logs # [Optional] Path where logs are stored
-      - romm_redis_data:/redis-data # Cached data for background tasks
-      - romm_resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
     ports:
       - 8888:8080
 
 volumes:
-  romm_redis_data:
-  romm_resources:
-  romm_assets:
-  romm_logs:
+  redis_data:
+  resources:
+  assets:
+  logs:
   roms_library:
     external: true
