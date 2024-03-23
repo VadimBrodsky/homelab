@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    volumes:
+      - shared_podcasts:/audiobooks
+      - config:/config
+      - metadata:/metadata
+      - shared_podcasts:/podcasts
+    environment:
+      - TZ=America/Toronto
+    ports:
+      - 13378:80
+    restart: unless-stopped
+
+volumes:
+  config:
+  metadata:
+  shared_podcasts:
+    external: true
+  shared_podcasts:
+    external: true
