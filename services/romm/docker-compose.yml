@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   romm:
     image: rommapp/romm:3.4.0
@@ -24,6 +22,7 @@ services:
       - roms_library:/romm/library # Your game library
     ports:
       - 8888:8080
+    env_file: stack.env
 
 volumes:
   redis_data:
