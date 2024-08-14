@@ -22,7 +22,6 @@ services:
       - roms_library:/romm/library # Your game library
     ports:
       - 8888:8080
-    env_file: stack.env
 
 volumes:
   redis_data:
