@@ -1,6 +1,6 @@
 services:
   portainer:
-    image: portainer/portainer-ee:2.21.2-alpine
+    image: portainer/portainer-ee:2.21.3-alpine
     environment:
       PORTAINER_LICENSE_KEY: ${PORTAINER_LICENSE_KEY}
     privileged: true
