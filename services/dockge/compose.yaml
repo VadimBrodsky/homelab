@@ -9,7 +9,7 @@ services:
       # podman rootless mode
       - ${XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock
       - ${HOME}/appdata/dockge:/app/data
-        
+
       # If you want to use private registries, you need to share the auth file with Dockge:
       # - /root/.docker/:/root/.docker
 
