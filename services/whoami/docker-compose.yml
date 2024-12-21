@@ -1,12 +1,13 @@
-version: "3"
-
 services:
   whoami:
     image: containous/whoami:v1.5.0
+    container_name: whoami
     networks:
       - reverse_proxy
     restart: unless-stopped
-
 networks:
   reverse_proxy:
     external: true
+x-dockge:
+  urls:
+    - https://whoami.brodsky.club
