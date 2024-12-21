@@ -1,7 +1,7 @@
 # homelab
 
 ```shell
-export PORTAINER_LICENSE_KEY=<abc123xyz>
-docker network create reverse_proxy
-docker volume crete portainer_data
+podman network create reverse_proxy
+cd services/dockge
+podman compose up -d
 ```
