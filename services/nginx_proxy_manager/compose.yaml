@@ -7,10 +7,12 @@ services:
       - 443:443
       #- 8181:81
     volumes:
-      - /home/vadim/appdata/npm/data:/data
-      - /home/vadim/appdata/npm/letsencrypt:/etc/letsencrypt
+      - ${APPDATA_PATH}/data:/data
+      - ${APPDATA_PATH}/letsencrypt:/etc/letsencrypt
     environment:
       - DISABLE_IPV6=true
+    env_file:
+      - .env
     networks:
       - reverse_proxy
     healthcheck:
@@ -28,3 +30,6 @@ networks:
       uidmap: 0:1000:1 # Map container root (UID 0) to host UID 1000 (your user)
       gidmap: 0:1000:1 # Map container root (GID 0) to host GID 1000 (your group)
       port_handler: slirp4netns
+x-dockge:
+  urls:
+    - https://npm.brodsky.club

@@ -3,18 +3,21 @@ services:
     image: louislam/dockge:1
     container_name: dockge
     restart: unless-stopped
-    #ports: # handled by npm
-    # - 5001:5001
     volumes:
       # podman rootless mode
-      - /run/user/1000/podman/podman.sock:/var/run/docker.sock
-      - /home/vadim/appdata/dockge:/app/data
-      - /home/vadim/homelab/services:/home/vadim/homelab/services
+      - ${XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock
+      - ${APPDATA_PATH}/dockge:/app/data
+      - ${STACKS_PATH}:${STACKS_PATH}
     environment:
-      - DOCKGE_STACKS_DIR=/home/vadim/homelab/services
-      - APP_DATA_DIR=/home/vadim/appdata
+      - DOCKGE_STACKS_DIR=${STACKS_PATH}
+      - APP_DATA_DIR=${APPDATA_PATH}
+    env_file:
+      - .env
     networks:
       - reverse_proxy
 networks:
   reverse_proxy:
     external: true
+x-dockge:
+  urls:
+    - https://dockge.brodsky.club
