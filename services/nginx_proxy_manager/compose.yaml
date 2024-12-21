@@ -1,0 +1,30 @@
+services:
+  nginxproxymanager:
+    image: jc21/nginx-proxy-manager:2.12.1
+    container_name: npm
+    ports:
+      - 80:80
+      - 443:443
+      #- 8181:81
+    volumes:
+      - /home/vadim/appdata/npm/data:/data
+      - /home/vadim/appdata/npm/letsencrypt:/etc/letsencrypt
+    environment:
+      - DISABLE_IPV6=true
+    networks:
+      - reverse_proxy
+    healthcheck:
+      test:
+        - CMD
+        - /bin/check-health
+      interval: 10s
+      timeout: 3s
+    restart: unless-stopped
+networks:
+  reverse_proxy:
+    external: true
+    driver: slirp4netns
+    driver_opts:
+      uidmap: 0:1000:1 # Map container root (UID 0) to host UID 1000 (your user)
+      gidmap: 0:1000:1 # Map container root (GID 0) to host GID 1000 (your group)
+      port_handler: slirp4netns
