@@ -1,23 +1,20 @@
 services:
   dockge:
     image: louislam/dockge:1
+    container_name: dockge
     restart: unless-stopped
-    ports:
-      # Host Port : Container Port
-      - 5001:5001
+    #ports: # handled by npm
+    # - 5001:5001
     volumes:
       # podman rootless mode
-      - ${XDG_RUNTIME_DIR}/podman/podman.sock:/var/run/docker.sock
-      - ${HOME}/appdata/dockge:/app/data
-
-      # If you want to use private registries, you need to share the auth file with Dockge:
-      # - /root/.docker/:/root/.docker
-
-      # Stacks Directory
-      # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
-      # ⚠️ 1. FULL path only. No relative path (MUST)
-      # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
-      - ${HOME}/homelab/services:${HOME}/homelab/services
+      - /run/user/1000/podman/podman.sock:/var/run/docker.sock
+      - /home/vadim/appdata/dockge:/app/data
+      - /home/vadim/homelab/services:/home/vadim/homelab/services
     environment:
-      # Tell Dockge where is your stacks directory
-      - DOCKGE_STACKS_DIR=${HOME}/homelab/services
+      - DOCKGE_STACKS_DIR=/home/vadim/homelab/services
+      - APP_DATA_DIR=/home/vadim/appdata
+    networks:
+      - reverse_proxy
+networks:
+  reverse_proxy:
+    external: true
