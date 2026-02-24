@@ -1,0 +1,21 @@
+services:
+  kosync:
+    image: ghcr.io/nperez0111/koreader-sync:latest
+    container_name: kosync
+    # ports:
+    #   - 3000:3000
+    healthcheck:
+      test: ["CMD", "wget" ,"--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 5m
+      timeout: 3s
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA_PATH}/kosync/data:/app/data
+    networks:
+      - reverse_proxy
+networks:
+  reverse_proxy:
+    external: true
+x-dockge:
+  urls:
+    - https://kosync.brodsky.club/
